@@ -1,22 +1,19 @@
 #! /usr/bin/python3
 
-class CajaAhorro:
-    """Cuenta bancaria que tiene un tope de extracción (no se puede extraer
-    más de cierto monto por cada operación"""
+from cuenta import Cuenta
+
+class CajaAhorro(Cuenta):
+    """Cuenta bancaria que tiene un tope de extracciÃ³n (no se puede extraer
+    mÃ¡s de cierto monto por cada operaciÃ³n"""
 
     def __init__(self, titular, saldoInicial, topeExtraccion):
-        self.titular = titular
-        self.saldo = saldoInicial
         self.topeExtraccion = topeExtraccion
+        super().__init__(titular,saldoInicial)
 
     def extraer(self, monto):
         if monto > self.topeExtraccion or monto > self.saldo:
-            return "Error. Excede tope de extracción o saldo"
+            return "Error. Excede tope de extracciÃ³n o saldo"
         else:
-            self.saldo = self.saldo - monto
-            return "Extracción exitosa. Saldo $" + str(self.saldo)    
+            return super().extraer(monto)
     
-    def depositar(self, monto):
-        self.saldo = self.saldo + monto
-        return "Depósito exitoso. Saldo $" + str(self.saldo)
 
