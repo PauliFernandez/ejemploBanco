@@ -2,11 +2,12 @@
 #Ponemos a disposición de este archivo las dos clases que utilizaremos.
 from cajaAhorro import CajaAhorro
 from cuentaCorriente import CuentaCorriente
+from cajaAhorroEspecial import CajaAhorroEspecial
 
 #Solicitamos datos:
 nombre = input("Ingrese el nombre del titular de la cuenta ")
 saldo = int(input("Ingrese el depósito inicial "))
-tipo = int(input("Ingrese el tipo de cuenta: 1:Caja de Ahorro 2:CtaCte "))
+tipo = int(input("Ingrese el tipo de cuenta: 1:Caja de Ahorro 2:CtaCte 3:CA Especial"))
 tope = int(input("Ingrese el tope de extracción/descubierto "))
 
 #Según el valor recibido en tipo, instanciamos de CajaAhorro o CuentaCorriente.
@@ -14,8 +15,11 @@ if tipo == 1:
     cuenta = CajaAhorro(nombre, saldo, tope)
 elif tipo == 2:
     cuenta = CuentaCorriente(nombre, saldo, tope)
+elif tipo == 3:
+    deposito_minimo = int(input("Ingrese el depósito mínimo: "))
+    cuenta = CajaAhorroEspecial(nombre, saldo, tope, deposito_minimo)
 else:
-    print("Error: ingrese el tipo 1 o 2")
+    print("Error: ingrese el tipo 1, 2 o 3")
     exit()
 
 #Este bucle nos permite realizar muchas operaciones.
