@@ -14,4 +14,3 @@ class Cuenta:
     def extraer(self,monto):
         self.saldo = self.saldo - monto
         return "Extracción exitosa. Saldo $" + str(self.saldo)    
-
